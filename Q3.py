@@ -43,6 +43,7 @@ volume_3 = Dropout(.35)(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
 volume_4 = Conv2D(32, (1,1), padding='same', activation='relu')(volume_4)
+volume_4 = Dropout(.35)(volume_4)
 
 # Concatenate all volumes of the Inception module
 inception_module = keras.layers.concatenate([volume_1, volume_2, volume_3,
