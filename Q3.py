@@ -31,6 +31,7 @@ input_img = Input(shape = (32, 32, 3))
 
 # Create Volumes for the Inception module
 volume_1 = Conv2D(64, (1,1), padding='same', activation='relu')(input_img)
+volume_1 = Dropout(.25)(volume_1)
 
 volume_2 = Conv2D(96, (1,1), padding='same', activation='relu')(input_img)
 volume_2 = Conv2D(128, (3,3), padding='same', activation='relu')(volume_2)
