@@ -140,7 +140,7 @@ def resnet_create(input_shape, depth, num_classes=10):
                 # linear projection residual shortcut connection to match changed dims
                 x = resnet_layer(inputs=x, num_filters=num_filters, kernel_size=1, strides=strides, activation=None, batch_normalization=False)
             # Add skip connection
-            x = keras.layers.add([x, y])
+            #x = keras.layers.add([x, y])
             x = Activation('relu')(x)
         num_filters *= 2                    # Increase number of filter
 
