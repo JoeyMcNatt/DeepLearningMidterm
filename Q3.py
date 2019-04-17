@@ -34,11 +34,11 @@ volume_1 = Conv2D(64, (1,1), padding='same', activation='relu')(input_img)
 volume_1 = Dropout(.5)(volume_1)
 
 volume_2 = Conv2D(96, (1,1), padding='same', activation='relu')(input_img)
-volume_2 = Conv2D(128, (3,3), padding='same', activation='relu')(volume_2)
+volume_2 = Conv2D(128, (5,5), padding='same', activation='relu')(volume_2)
 volume_2 = Dropout(.5)(volume_2)
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
-volume_3 = Conv2D(32, (5,5), padding='same', activation='relu')(volume_3)
+volume_3 = Conv2D(32, (3,3), padding='same', activation='relu')(volume_3)
 volume_3 = Dropout(.5)(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
