@@ -31,19 +31,19 @@ input_img = Input(shape = (32, 32, 3))
 
 # Create Volumes for the Inception module
 volume_1 = Conv2D(64, (1,1), padding='same', activation='relu')(input_img)
-volume_1 = Dropout(.35)(volume_1)
+volume_1 = Dropout(.5)(volume_1)
 
 volume_2 = Conv2D(96, (1,1), padding='same', activation='relu')(input_img)
 volume_2 = Conv2D(128, (3,3), padding='same', activation='relu')(volume_2)
-volume_2 = Dropout(.35)(volume_2)
+volume_2 = Dropout(.5)(volume_2)
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
 volume_3 = Conv2D(32, (5,5), padding='same', activation='relu')(volume_3)
-volume_3 = Dropout(.25)(volume_3)
+volume_3 = Dropout(.5)(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
 volume_4 = Conv2D(32, (1,1), padding='same', activation='relu')(volume_4)
-volume_4 = Dropout(.1)(volume_4)
+volume_4 = Dropout(.5)(volume_4)
 
 # Concatenate all volumes of the Inception module
 inception_module = keras.layers.concatenate([volume_1, volume_2, volume_3,
@@ -56,7 +56,7 @@ model = Model(inputs = input_img, outputs = out)
 print(model.summary())
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-hist = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=1024)
+hist = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=512)
 
 
 scores = model.evaluate(X_test, y_test, verbose=0)
