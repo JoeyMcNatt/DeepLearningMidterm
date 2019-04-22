@@ -26,7 +26,7 @@ for k in range(n_chars_to_predict):
     # truncate sequences to a fixed length
     encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
     # one hot encode
-    #encoded = to_categorical(encoded, num_classes=len(mapping))
+    encoded = to_categorical(encoded, num_classes=len(mapping))
     # predict character
     yhat = model.predict_classes(encoded, verbose=0)
     
